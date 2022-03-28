@@ -33,11 +33,7 @@ class Math:
 			x,y = y, x%y
 		return x
 
-	# def gcd(a, b):
-	# 	if b > a: return Math.gcd(b,a)
-	# 	if b == 0: return a
-	# 	return Math.gcd(b ,a%b)
-
+	
 
 	def lcm(x,y):
 		lcm = (x*y) // Math.gcd(x,y)
