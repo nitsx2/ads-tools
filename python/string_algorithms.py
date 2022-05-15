@@ -1,4 +1,6 @@
 
+#note- to find all cyclic permutation of any string x just do x+x and this x+x will contain all the cyclic permutation of the string x.
+
 
 class String:
 
@@ -40,6 +42,9 @@ class String:
 					R -= 1
 
 		return zarray
+
+
+
 
 
 
