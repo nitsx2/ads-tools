@@ -213,6 +213,63 @@ class GraphAlgo:
 
 
 
+#KRUSHKAL
+
+
+import heapq
+class Solution:
+
+    def __init__(self):
+        self.vis = {}
+        self.res = 0
+
+	def solve(self, A, B):
+        self.vis = {i+1: False for i in range(A)}
+        self.who = [i for i in range(A+1)]
+        self.h = [1 for i in range(A+1)]
+        self.krushkal(B)
+        
+        return self.res
+
+
+    def krushkal(self, edges):
+        edges = sorted(edges, key=lambda item: item[2])
+
+        for edge in edges:
+            x,y,w =  edge
+            x = self.find(x)
+            y = self.find(y)
+            if x != y:
+                self.res += w
+                self.union(x,y)
+
+
+
+    def find(self, x):
+        if x == self.who[x]: return x
+        self.who[x] = self.find(self.who[x])
+        return self.who[x]
+
+
+    def union(self, x, y):
+        x = self.find(x)
+        y = self.find(y)
+
+        if x == y: return False # cycle
+
+        if self.h[x] > self.h[y]:
+            self.who[y] = x
+        elif self.h[y] > self.h[x]:
+            self.who[x] = y
+        else:
+            self.who[y] = x
+            self.h[x] += 1
+        return True
+
+
+
+
+
 
 # adjlist = {1: [(1,2),(20,4)], 2: [(1,1), (37,3), (10,5)], 3: [(1,6), (37,2)], 4: [(20,1), (35,5)], 5: [(10,2), (35,4), (100,6)], 6: [(1,3), (100,5), (5,7)],  7: [(5,6), (2,8)], 8: [(2,7)]}
 
